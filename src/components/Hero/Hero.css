@@ -1,0 +1,364 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 0 80px;
+}
+
+/* Blobs */
+.hero__blob {
+  position: absolute;
+  animation: blobMorph 8s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero__blob--1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #f5e6e0 0%, #e8b4a8 60%, transparent 100%);
+  top: -100px; right: -100px;
+  animation-duration: 10s;
+  opacity: 0.5;
+}
+.hero__blob--2 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #c4b8d4 0%, transparent 70%);
+  bottom: 0; left: -80px;
+  animation-duration: 12s;
+  animation-delay: -4s;
+  opacity: 0.3;
+}
+.hero__blob--3 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, #a8b5a0 0%, transparent 70%);
+  top: 40%; left: 40%;
+  animation-duration: 9s;
+  animation-delay: -2s;
+  opacity: 0.2;
+}
+
+/* Deco floating elements */
+.hero__deco {
+  position: absolute;
+  pointer-events: none;
+  animation: float 6s ease-in-out infinite;
+  z-index: 0;
+}
+.hero__deco--star {
+  font-size: 1.8rem;
+  color: var(--gold);
+  top: 20%;
+  left: 10%;
+  animation-duration: 5s;
+  animation-delay: -1s;
+  opacity: 0.7;
+}
+.hero__deco--heart {
+  font-size: 1.4rem;
+  color: var(--rose);
+  top: 70%;
+  right: 12%;
+  animation-duration: 7s;
+  animation-delay: -3s;
+  opacity: 0.6;
+}
+.hero__deco--dot {
+  width: 12px; height: 12px;
+  background: var(--rose);
+  border-radius: 50%;
+  top: 35%;
+  right: 20%;
+  animation-duration: 4s;
+}
+.hero__deco--ring {
+  width: 60px; height: 60px;
+  border: 3px solid var(--lavender);
+  border-radius: 50%;
+  bottom: 25%;
+  left: 8%;
+  animation-duration: 8s;
+  animation-delay: -2s;
+  opacity: 0.5;
+}
+
+/* Inner layout */
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Badge */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  border: 1.5px solid var(--rose);
+  color: var(--dusty-rose);
+  padding: 6px 16px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  box-shadow: var(--shadow-soft);
+  animation: badgePop 0.6s cubic-bezier(.22,.68,0,1.2) 0.2s both;
+}
+.hero__badge-dot {
+  width: 8px; height: 8px;
+  background: #4caf50;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Greeting */
+.hero__hello {
+  font-family: var(--font-accent);
+  font-size: 1.3rem;
+  color: var(--dusty-rose);
+  margin-bottom: 4px;
+  animation: fadeUp 0.7s ease 0.3s both;
+}
+
+/* Name */
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  color: var(--deep);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  animation: fadeUp 0.7s ease 0.4s both;
+}
+.hero__name-accent {
+  color: var(--burgundy);
+  font-style: italic;
+}
+
+/* Roles ticker */
+.hero__roles {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.7s ease 0.5s both;
+}
+.hero__role {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-accent);
+  font-size: 1.2rem;
+  color: var(--mocha);
+  animation: roleCycle 10s ease-in-out infinite;
+  opacity: 0;
+}
+
+@keyframes roleCycle {
+  0%   { opacity: 0; transform: translateY(20px); }
+  8%   { opacity: 1; transform: translateY(0); }
+  22%  { opacity: 1; transform: translateY(0); }
+  30%  { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+/* Tagline */
+.hero__tagline {
+  font-size: 1rem;
+  color: var(--mocha);
+  max-width: 440px;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.7s ease 0.6s both;
+  line-height: 1.8;
+}
+.hero__tagline strong { color: var(--burgundy); }
+
+/* Actions */
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.7s ease 0.7s both;
+}
+
+/* Stats */
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  animation: fadeUp 0.7s ease 0.85s both;
+}
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+}
+.hero__stat-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--burgundy);
+  line-height: 1;
+}
+.hero__stat-label {
+  font-size: 0.72rem;
+  color: var(--mocha);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+.hero__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--rose);
+  opacity: 0.4;
+}
+
+/* Visual side */
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s ease 0.5s both;
+}
+
+.hero__avatar-wrap {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+.hero__avatar-ring {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 2px dashed var(--rose);
+  opacity: 0.5;
+  animation: spinSlow 20s linear infinite;
+}
+
+.hero__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--rose) 60%, var(--dusty-rose) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card), inset 0 0 40px rgba(255,255,255,0.3);
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero__avatar-initials {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--white);
+  font-style: italic;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+/* Floating chips */
+.hero__chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 1px solid var(--rose);
+  border-radius: 99px;
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--mocha);
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+  animation: float 4s ease-in-out infinite;
+}
+.hero__chip--1 { top: 10%; left: -20%; animation-delay: 0s; }
+.hero__chip--2 { top: 28%; right: -22%; animation-delay: -1s; }
+.hero__chip--3 { bottom: 28%; left: -24%; animation-delay: -2s; }
+.hero__chip--4 { bottom: 12%; right: -18%; animation-delay: -0.5s; }
+
+/* Scroll nudge */
+.hero__scroll-nudge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 3rem;
+  color: var(--mocha);
+  font-size: 0.75rem;
+  opacity: 0.6;
+  animation: fadeIn 1s ease 1.5s both;
+}
+.hero__scroll-mouse {
+  width: 22px;
+  height: 34px;
+  border: 2px solid var(--rose);
+  border-radius: 99px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+.hero__scroll-wheel {
+  width: 3px;
+  height: 6px;
+  background: var(--rose);
+  border-radius: 99px;
+  animation: scrollWheel 1.5s ease infinite;
+}
+@keyframes scrollWheel {
+  0%  { transform: translateY(0); opacity: 1; }
+  100%{ transform: translateY(10px); opacity: 0; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+  .hero__tagline { max-width: 100%; }
+  .hero__actions { justify-content: center; }
+  .hero__stats { justify-content: center; }
+  .hero__visual { order: -1; }
+  .hero__avatar-wrap { width: 240px; height: 240px; }
+  .hero__chip--1, .hero__chip--3 { left: -10%; }
+  .hero__chip--2, .hero__chip--4 { right: -10%; }
+}
+@media (max-width: 500px) {
+  .hero__chip { display: none; }
+  .hero__avatar-wrap { width: 200px; height: 200px; }
+}
+
+/* Add this to your existing Hero.css — profile image styles */
+
+/* Replace the .hero__avatar rule with these */
+.hero__avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--rose) 60%, var(--dusty-rose) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card), inset 0 0 40px rgba(255,255,255,0.3);
+  animation: float 6s ease-in-out infinite;
+  overflow: hidden; /* ← ensures image stays circular */
+}
+
+/* Profile image — fills the circle */
+.hero__avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* crops to fill */
+  object-position: center top; /* focuses on face */
+  border-radius: 50%;
+  display: block;
+}
